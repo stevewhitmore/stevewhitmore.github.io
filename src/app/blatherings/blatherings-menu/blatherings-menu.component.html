@@ -4,6 +4,7 @@
         <li *ngFor="let item of menuItems">
             <!-- <a (click)="relaySelection(item.name)">{{item.title}}</a> -->
             <a (click)="relaySelection(item.name)" [routerLink]="item.name">{{item.title}}</a>
+            <span>{{item.date}}</span>
         </li>
     </ul>
 </div>

@@ -17,9 +17,10 @@ mdFiles.forEach(file => {
     const fileMeta = {
         name: file,
         title: firstLine.slice(2),
+        date: file.match(/(\d*)-/g).join('').slice(0, -2),
     };
     filesListJson.push(fileMeta);
-    filesListJson.reverse();
 })
+filesListJson.reverse();
 
 fs.writeFileSync(`${blatheringsPath}/files.json`, JSON.stringify(filesListJson));
