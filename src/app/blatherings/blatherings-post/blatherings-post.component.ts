@@ -17,12 +17,12 @@ export class BlatheringsPostComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const postName = this.activatedRoute.snapshot.params['post-name'];
-    this.getPage(postName)
+    this.getPage();
   }
 
 
-  getPage(postName: string): void {
+  getPage(): void {
+    const postName = this.activatedRoute.snapshot.params['post-name'];
     console.log(postName)
     this.blatheringsDataService.getPageContent(postName)
       .subscribe({
