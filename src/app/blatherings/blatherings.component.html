@@ -1,0 +1,8 @@
+
+<section class="intro-text">
+    <div class="inner-container">
+        <app-blatherings-menu [menuItems]="fileNames$ | async"></app-blatherings-menu>
+        <app-blatherings-post [postContentInput]="pageData$ | async"></app-blatherings-post>
+    </div>
+</section>
+<router-outlet></router-outlet>

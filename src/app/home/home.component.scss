@@ -1,19 +1,26 @@
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  position: relative;
+$green: #02b802;
+$dark: #252934;
+
+a {
+  color: #fff;
+  &:hover {
+    color: $green;
+  }
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  display: block;
-  cursor: default;
+main {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 100%;
 }
 
 .intro-text {
-  background-color: #252934;
+  background-color: $dark;
   padding: 5rem 0;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-rows: minmax(min-content, max-content);
 }
 
 .inner-container {
@@ -39,7 +46,7 @@ body {
 }
 
 .inner-container h1 {
-  color: #02b802;
+  color: $green;
   font-weight: 700;
   font-size: 3rem;
   margin-bottom: 2rem;
@@ -68,35 +75,37 @@ section.social-wrap {
   background-color: #f5f7fa;
   justify-content: center;
   display: flex;
-  padding: 3rem 0;
+  padding: 0.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 section.social-wrap .inner-container {
-  min-width: 50%;
+  min-width: 20%;
   justify-content: space-between;
 }
 
 section.social-wrap a {
   display: block;
   font-size: 1.75rem;
-  color: #3d424a;
+  color: $dark;
   text-decoration: none;
   margin: 10px;
   line-height: 1;
 }
 
 svg {
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
 }
 
-path, rect {
+path, rect, a {
   transition: 0.5s all ease;
   fill: #3d424a;
 }
 
 a:hover path, a:hover rect {
-  fill: #02b802;
+  fill: $green;
 }
 
 @media (max-width: 900px) {
