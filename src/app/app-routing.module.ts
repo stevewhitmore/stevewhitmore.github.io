@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BlatheringsComponent } from './blatherings/blatherings.component';
 import { HomeComponent } from './home/home.component';
+import { BlatheringsComponent } from './blatherings/blatherings.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

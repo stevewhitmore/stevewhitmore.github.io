@@ -1,0 +1,45 @@
+@import '../shared/shared-styles.scss';
+
+section.social-wrap {
+    background-color: #f5f7fa;
+    justify-content: center;
+    display: flex;
+    padding: 0.5rem 0;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+  section.social-wrap .inner-container {
+    min-width: 20%;
+    justify-content: space-between;
+  }
+  
+  section.social-wrap a {
+    display: block;
+    font-size: 1.75rem;
+    color: $dark;
+    text-decoration: none;
+    margin: 10px;
+    line-height: 1;
+  }
+  
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+  
+  path, rect, a {
+    transition: 0.5s all ease;
+    fill: #3d424a;
+  }
+  
+  a:hover path, a:hover rect {
+    fill: $green;
+  }
+
+  @media (max-width: 900px) {
+    section.social-wrap .inner-container {
+      min-width: 100%;
+      flex-direction: row;
+    }
+  }

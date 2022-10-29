@@ -1,17 +1,31 @@
 
-<section class="intro-text">
-    <div class="inner-container">
-        <div *ngIf="menuItems$ | async as menuItems">
+<mat-sidenav-container class="mat-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+        <nav *ngIf="menuItems$ | async as menuItems">
             <ul>
                 <li><a routerLink="">Home</a></li>
                 <li *ngFor="let item of menuItems">
-                    <a routerLink="/blatherings/{{item.name}}" routerLinkActive="active" ariaCurrentWhenActive="page">{{item.title}}</a>
                     <span>{{item.date}}</span>
+                    <a routerLink="/blatherings/{{item.name}}" routerLinkActive="active" ariaCurrentWhenActive="page">{{item.title}}</a>
                 </li>
             </ul>
-        </div>
-        <div *ngIf="postContent$ | async as postContent">
-            <markdown [data]="postContent"></markdown>
-        </div>
-    </div>
-</section>
+        </nav>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <button mat-button (click)="sidenav.toggle()" [(ngModel)]="opened">
+        {{opened}}
+    </button>
+      <main>
+        <section class="text-content">
+            <div class="inner-container">
+                <div *ngIf="postContent$ | async as postContent">
+                    <markdown [data]="postContent"></markdown>
+                </div>
+            </div>
+        </section>
+        <section></section>
+        <sw-footer></sw-footer>
+    </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,17 +1,20 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
 import { BlatheringsDataService } from './blatherings-data.service';
 
 @Component({
-  selector: 'app-blatherings',
+  selector: 'sw-blatherings',
   templateUrl: './blatherings.component.html',
-  styleUrls: ['./blatherings.component.scss']
+  styleUrls: ['./blatherings.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class BlatheringsComponent implements OnInit, OnDestroy {
   menuItems$: Observable<any> = this.blatheringsDataService.getPageTitles();
-  postContent$: Observable<any> = of();
+  postContent$: Observable<any> = of('f');
   routerSub: Subscription = new Subscription();
+  opened = false;
+  postName = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,8 +28,8 @@ export class BlatheringsComponent implements OnInit, OnDestroy {
   }
 
   getPostContent() {
-    const postName = this.activatedRoute.snapshot.params['post-name'];
-    this.postContent$ = this.blatheringsDataService.getPageContent(postName)
+    this.postName = this.activatedRoute.snapshot.params['post-name'];
+    this.postContent$ = this.blatheringsDataService.getPageContent(this.postName)
   }
 
   listenForRouteChange() {
@@ -43,5 +46,4 @@ export class BlatheringsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
       this.routerSub.unsubscribe;
   }
-
 }

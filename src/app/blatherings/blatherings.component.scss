@@ -1,0 +1,42 @@
+@import '../shared/shared-styles.scss';
+
+a {
+  padding: 0.5rem;
+  display: block;
+}
+
+li {
+  list-style: none;
+  text-align: right;
+  margin-top: 1rem;
+}
+
+span {
+  color: #e3e3e3;
+}
+
+.inner-container {
+  max-width: 100%;
+}
+
+.mat-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mat-drawer-content.mat-sidenav-content {
+  background-color: $dark;
+}
+
+.mat-drawer {
+  background: $dark;
+  width: 800px;
+}
+
+.mat-button {
+  background: transparent;
+  border: 1px solid white !important;
+}

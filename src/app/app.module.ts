@@ -6,13 +6,21 @@ import { MarkdownModule } from 'ngx-markdown';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BlatheringsComponent } from './blatherings/blatherings.component';
-import { HomeComponent } from './home/home.component';
 import { BlatheringsDataService } from './blatherings/blatherings-data.service';
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
     BlatheringsComponent,
+    FooterComponent,
     HomeComponent,
   ],
   imports: [
@@ -20,6 +28,12 @@ import { BlatheringsDataService } from './blatherings/blatherings-data.service';
     AppRoutingModule,
     HttpClientModule,
     MarkdownModule.forRoot(),
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [
     BlatheringsDataService,

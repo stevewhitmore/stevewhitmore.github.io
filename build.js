@@ -14,10 +14,11 @@ filesListJson = [];
 mdFiles.forEach(file => {
     const contents = fs.readFileSync(`${blatheringsPath}/${file}`, {encoding:'utf8', flag:'r'});
     const firstLine = contents.split(/\r?\n/)[0];
+    const date = file === 'index.md' ? '' : file.match(/(\d*)-/g).join('').slice(0, -2);
     const fileMeta = {
         name: file,
         title: firstLine.slice(2),
-        date: file.match(/(\d*)-/g).join('').slice(0, -2),
+        date,
     };
     filesListJson.push(fileMeta);
 })

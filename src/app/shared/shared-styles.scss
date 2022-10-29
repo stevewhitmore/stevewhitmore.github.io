@@ -2,12 +2,13 @@ $green: #02b802;
 $dark: #252934;
 
 a {
-  color: #fff;
+    transition: 0.5s all ease;
+    color: #fff;
   &:hover {
     color: $green;
   }
 }
-
+ 
 main {
     min-height: 100%;
     display: grid;
@@ -15,7 +16,7 @@ main {
     grid-template-columns: 100%;
 }
 
-.intro-text {
+.text-content {
   background-color: $dark;
   padding: 5rem 0;
   display: grid;
@@ -33,18 +34,6 @@ main {
   box-sizing: border-box;
 }
 
-.inner-container .text-section {
-  flex-grow: 1;
-  padding-right: 25px;
-}
-
-.inner-container .welcome-text {
-  color: #9aa5b1;
-  font-weight: 700;
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-}
-
 .inner-container h1 {
   color: $green;
   font-weight: 700;
@@ -60,13 +49,4 @@ main {
 
 .inner-container p:last-child {
   margin: 0;
-}
-
-.inner-container .profile-pic {
-  display: flex;
-  align-items: center;
-}
-
-img {
-  border-radius: 20rem;
 }
