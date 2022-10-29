@@ -11,7 +11,7 @@ import { BlatheringsDataService } from './blatherings-data.service';
 })
 export class BlatheringsComponent implements OnInit, OnDestroy {
   menuItems$: Observable<any> = this.blatheringsDataService.getPageTitles();
-  postContent$: Observable<any> = of('f');
+  postContent$: Observable<any> = of();
   routerSub: Subscription = new Subscription();
   opened = false;
   postName = '';

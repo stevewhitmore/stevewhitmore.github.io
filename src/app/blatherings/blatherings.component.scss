@@ -19,6 +19,15 @@ span {
   max-width: 100%;
 }
 
+.no-content .inner-container {
+  min-width: 100%;
+  justify-content: space-evenly;
+
+  > div {
+    align-self: center;
+  }
+}
+
 .mat-container {
   position: absolute;
   top: 0;

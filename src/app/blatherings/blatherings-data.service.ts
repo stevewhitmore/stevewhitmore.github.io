@@ -25,6 +25,7 @@ export class BlatheringsDataService {
   }
 
   getPageContent(pageTitle: string): Observable<string> {
-    return this.httpClient.get(`assets/blatherings/${pageTitle}`, { responseType: 'text'} );
+    const path = pageTitle ? `assets/blatherings/${pageTitle}` : 'assets/blatherings/index.md';
+    return this.httpClient.get(path, { responseType: 'text'} );
   }
 }

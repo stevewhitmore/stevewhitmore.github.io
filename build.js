@@ -6,19 +6,19 @@ const files = fs.readdirSync(blatheringsPath);
 
 const mdFiles = [];
 files.forEach(file => {
-    if (path.extname(file) == ".md")
-      mdFiles.push(file);
+    if (path.extname(file) == ".md" && !file.includes('index.md')) {
+        mdFiles.push(file);
+    }
   })
 
 filesListJson = [];
 mdFiles.forEach(file => {
     const contents = fs.readFileSync(`${blatheringsPath}/${file}`, {encoding:'utf8', flag:'r'});
     const firstLine = contents.split(/\r?\n/)[0];
-    const date = file === 'index.md' ? '' : file.match(/(\d*)-/g).join('').slice(0, -2);
     const fileMeta = {
         name: file,
         title: firstLine.slice(2),
-        date,
+        date: file.match(/(\d*)-/g).join('').slice(0, -2),
     };
     filesListJson.push(fileMeta);
 })
