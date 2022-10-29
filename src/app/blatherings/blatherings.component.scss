@@ -1,18 +1,25 @@
 @import '../shared/shared-styles.scss';
 
-a {
-  padding: 0.5rem;
-  display: block;
-}
 
 li {
   list-style: none;
   text-align: right;
-  margin-top: 1rem;
+  margin-top: 1rem;;
+
+  a {
+    padding: 0.5rem;
+    display: block;
+    text-decoration: none;
+    font-weight: 800;
+
+    span {
+      font-weight: normal;
+    }
+  }
 }
 
-span {
-  color: #e3e3e3;
+li:first-child {
+  text-align: left;
 }
 
 .inner-container {
@@ -25,6 +32,12 @@ span {
 
   > div {
     align-self: center;
+  }
+
+  nav {
+    max-height: 80vh;
+    overflow: auto;
+    padding-right: 2rem;
   }
 }
 
