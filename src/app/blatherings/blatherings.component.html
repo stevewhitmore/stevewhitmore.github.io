@@ -1,8 +1,17 @@
 
 <section class="intro-text">
     <div class="inner-container">
-        <app-blatherings-menu [menuItems]="fileNames$ | async"></app-blatherings-menu>
-        <app-blatherings-post [postContentInput]="pageData$ | async"></app-blatherings-post>
+        <div *ngIf="menuItems$ | async as menuItems">
+            <ul>
+                <li><a routerLink="">Home</a></li>
+                <li *ngFor="let item of menuItems">
+                    <a routerLink="/blatherings/{{item.name}}" routerLinkActive="active" ariaCurrentWhenActive="page">{{item.title}}</a>
+                    <span>{{item.date}}</span>
+                </li>
+            </ul>
+        </div>
+        <div *ngIf="postContent$ | async as postContent">
+            <markdown [data]="postContent"></markdown>
+        </div>
     </div>
 </section>
-<router-outlet></router-outlet>

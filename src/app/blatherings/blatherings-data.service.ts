@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subject } from 'rxjs';
 
 interface FileModel {
   name: string;
@@ -11,15 +11,20 @@ interface FileModel {
   providedIn: 'root'
 })
 export class BlatheringsDataService {
+  pageContentSource = new Subject();
+  pageContent$ = this.pageContentSource.asObservable();
 
   constructor(private httpClient: HttpClient) { }
+
+  updatePageContent(pageContent: any) {
+    this.pageContentSource.next(pageContent);
+  }
 
   getPageTitles(): Observable<FileModel[]> {
     return this.httpClient.get('assets/blatherings/files.json') as Observable<FileModel[]>;
   }
 
   getPageContent(pageTitle: string): Observable<string> {
-    console.log('pageTitle:', pageTitle)
     return this.httpClient.get(`assets/blatherings/${pageTitle}`, { responseType: 'text'} );
   }
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BlatheringsPostComponent } from './blatherings/blatherings-post/blatherings-post.component';
 import { BlatheringsComponent } from './blatherings/blatherings.component';
 import { HomeComponent } from './home/home.component';
 
