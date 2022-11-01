@@ -15,8 +15,17 @@
         </mat-sidenav>
     
         <mat-sidenav-content>
-        <button mat-button (click)="sidenav.toggle()" [(ngModel)]="opened">
-            {{opened}}
+        <button
+            mat-icon-button
+            color="primary"
+            (click)="sidenav.toggle()"
+            [(ngModel)]="opened"
+            name="opened"
+            ngDefaultControl>
+            <mat-icon *ngIf="!opened; else closeArrow">chevron_right</mat-icon>
+            <ng-template #closeArrow>
+                <mat-icon>chevron_left</mat-icon>
+            </ng-template>
         </button>
         <main>
             <section class="text-content">

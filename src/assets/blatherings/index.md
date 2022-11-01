@@ -1,3 +1,3 @@
 # Blatherings
 
-Here I write about stuff
+musings, and contemplations.

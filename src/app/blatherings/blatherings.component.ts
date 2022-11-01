@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
+import 'prismjs/components/prism-markup-templating';
 import { BlatheringsDataService } from './blatherings-data.service';
 
 @Component({

@@ -1,5 +1,18 @@
 @import '../shared/shared-styles.scss';
 
+.mat-icon-button {
+  background: transparent;
+  color: green;
+  transform: scale(2);
+}
+
+.text-content {
+  padding-top: 0;
+}
+
+.mat-sidenav, nav {
+  border-right: 1px solid green;
+}
 
 li {
   list-style: none;
