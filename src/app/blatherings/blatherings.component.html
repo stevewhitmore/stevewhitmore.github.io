@@ -4,7 +4,8 @@
             <nav *ngIf="menuItems$ | async as menuItems">
                 <ul>
                     <li><a routerLink="">Back</a></li>
-                    <li *ngFor="let item of menuItems">
+                    <li *ngFor="let item of menuItems"
+                    (click)="sidenav.toggle()">
                         <a routerLink="/blatherings/{{item.name}}" routerLinkActive="active" ariaCurrentWhenActive="page">
                             <span>{{item.date}}</span><br>
                             {{item.title}}
@@ -15,18 +16,14 @@
         </mat-sidenav>
     
         <mat-sidenav-content>
-        <button
-            mat-icon-button
-            color="primary"
-            (click)="sidenav.toggle()"
-            [(ngModel)]="opened"
-            name="opened"
-            ngDefaultControl>
-            <mat-icon *ngIf="!opened; else closeArrow">chevron_right</mat-icon>
-            <ng-template #closeArrow>
-                <mat-icon>chevron_left</mat-icon>
-            </ng-template>
-        </button>
+            <mat-button-toggle
+                value="left"
+                aria-label="Text align left"
+                (click)="sidenav.toggle()"
+                [(ngModel)]="opened"
+                >
+                <mat-icon>chevron_right</mat-icon>
+            </mat-button-toggle>
         <main>
             <section class="text-content">
                 <div class="inner-container">

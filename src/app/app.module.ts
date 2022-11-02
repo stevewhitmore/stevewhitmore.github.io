@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
+    MatButtonToggleModule,
   ],
   providers: [
     BlatheringsDataService,

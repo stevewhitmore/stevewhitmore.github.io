@@ -1,16 +1,21 @@
 @import '../shared/shared-styles.scss';
 
-.mat-icon-button {
+mat-icon {
   background: transparent;
   color: green;
   transform: scale(2);
+  transition: all 0.5s ease;
+}
+
+.mat-button-toggle-checked mat-icon {
+  transform: rotate(180deg) scale(2);
 }
 
 .text-content {
   padding-top: 0;
 }
 
-.mat-sidenav, nav {
+nav {
   border-right: 1px solid green;
 }
 
