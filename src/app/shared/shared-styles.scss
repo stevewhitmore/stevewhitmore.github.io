@@ -9,19 +9,9 @@ a {
   }
 }
  
-main {
-    min-height: 100%;
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: 100%;
-}
-
 .text-content {
   background-color: $dark;
   padding: 5rem 0;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-auto-rows: minmax(min-content, max-content);
 }
 
 .inner-container {

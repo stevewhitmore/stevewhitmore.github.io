@@ -14,7 +14,6 @@ export class BlatheringsComponent implements OnInit, OnDestroy {
   menuItems$: Observable<any> = this.blatheringsDataService.getPageTitles();
   postContent$: Observable<any> = of();
   routerSub: Subscription = new Subscription();
-  opened = false;
   postName = '';
 
   constructor(
@@ -45,6 +44,6 @@ export class BlatheringsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.routerSub.unsubscribe;
+    this.routerSub.unsubscribe;
   }
 }

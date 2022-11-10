@@ -1,37 +1,26 @@
 @import '../shared/shared-styles.scss';
 
-mat-icon {
-  background: transparent;
-  color: green;
-  transform: scale(2);
-  transition: all 0.5s ease;
-}
-
-.mat-button-toggle-checked mat-icon {
-  transform: rotate(180deg) scale(2);
-}
-
 .text-content {
   padding-top: 0;
 }
 
 nav {
   border-right: 1px solid green;
-}
 
-li {
-  list-style: none;
-  text-align: right;
-  margin-top: 1rem;;
-
-  a {
-    padding: 0.5rem;
-    display: block;
-    text-decoration: none;
-    font-weight: 800;
-
-    span {
-      font-weight: normal;
+  li {
+    list-style: none;
+    text-align: right;
+    margin-top: 1rem;;
+  
+    a {
+      padding: 0.5rem;
+      display: block;
+      text-decoration: none;
+      font-weight: 800;
+  
+      span {
+        font-weight: normal;
+      }
     }
   }
 }
@@ -42,41 +31,4 @@ li:first-child {
 
 .inner-container {
   max-width: 100%;
-}
-
-.no-content .inner-container {
-  min-width: 100%;
-  justify-content: space-evenly;
-
-  > div {
-    align-self: center;
-  }
-
-  nav {
-    max-height: 80vh;
-    overflow: auto;
-    padding-right: 2rem;
-  }
-}
-
-.mat-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.mat-drawer-content.mat-sidenav-content {
-  background-color: $dark;
-}
-
-.mat-drawer {
-  background: $dark;
-  width: 800px;
-}
-
-.mat-button {
-  background: transparent;
-  border: 1px solid white !important;
 }
