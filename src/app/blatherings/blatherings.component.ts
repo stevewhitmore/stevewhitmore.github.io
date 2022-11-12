@@ -16,6 +16,7 @@ export class BlatheringsComponent implements OnInit, OnDestroy {
   postContent$: Observable<any> = of();
   routerSub: Subscription = new Subscription();
   postName = '';
+  hideMenu = false;
   // @ViewChild('h1') h1: ElementRef | undefined;
 
   constructor(
@@ -69,6 +70,9 @@ export class BlatheringsComponent implements OnInit, OnDestroy {
       }
   }
 
+  toggleMenu() {
+    this.hideMenu = !this.hideMenu;
+  }
 
   ngOnDestroy(): void {
     this.routerSub.unsubscribe;

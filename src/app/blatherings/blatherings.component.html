@@ -1,27 +1,42 @@
 <div *ngIf="postContent$ | async as postContent">
     <section class="text-content" [ngClass]="{'post-landing': !postName}">
         <div class="inner-container">
-            <nav *ngIf="menuItems$ | async as menuItems">
-                <ul>
-                    <li><a [routerLink]="postName ? '/blatherings' : ''">Back</a></li>
-                    <li *ngFor="let item of menuItems">                                
-                        <a routerLink="/blatherings/{{item.name}}" routerLinkActive="active" ariaCurrentWhenActive="page">
-                            <span>{{item.date}}</span><br>
-                            {{item.title}}
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <ng-container *ngIf="menuItems$ | async as menuItems">
+                <nav [ngClass]="{'hide' : hideMenu}">
+                    <ul>
+                        <li><a [routerLink]="postName ? '/blatherings' : ''">Back</a></li>
+                        <li *ngFor="let item of menuItems">                                
+                            <a routerLink="/blatherings/{{item.name}}" routerLinkActive="active" ariaCurrentWhenActive="page">
+                                <span>{{item.date}}</span><br>
+                                {{item.title}}
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </ng-container>
             <article>
                 <markdown [data]="postContent"></markdown>
             </article>
         </div>
+
+        <button type="button" 
+                class="expand-collapse-menu"
+                (click)="toggleMenu()"
+                [ngClass]="{'hide' : hideMenu}">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="white" d="M11.92,19.92L4,12L11.92,4.08L13.33,5.5L7.83,11H22V13H7.83L13.34,18.5L11.92,19.92M4,12V2H2V22H4V12Z" />
+            </svg>
+        </button>
+        <button type="button"
+                class="back-to-top"
+                (click)="scrollToTop()">
+            back to top
+            <span>
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path fill="white" d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" />
+                </svg>
+            </span>
+        </button>
     </section>
     <sw-footer></sw-footer>
 </div>
-
-<button type="button"
-        class="back-to-top"
-        (click)="scrollToTop()">
-    back to top
-</button>

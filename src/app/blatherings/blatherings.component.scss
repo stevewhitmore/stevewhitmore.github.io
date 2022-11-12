@@ -9,12 +9,22 @@
     max-height: 65vh;
     overflow: auto;
   }
+
+  .back-to-top {
+    display: none;
+  }
 }
 
 nav {
   border-right: 1px solid green;
   min-width: 450px;
   padding-bottom: 5rem;
+  transition: 0.5s all ease;
+
+  &.hide {
+    position: sticky;
+    margin-left: -590px;
+  }
 
   li {
     list-style: none;
@@ -65,6 +75,29 @@ article {
 
   img {
     max-width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.expand-collapse-menu {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  float: left;
+  margin-right: -1.5rem;
+  background: transparent;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 0.5s all ease;
+  padding: 1rem;
+
+  &.hide {
+    transform: rotate(-180deg);
+  }
+
+  &:hover {
+    opacity: 1;
   }
 }
 
@@ -74,7 +107,6 @@ article {
   display: block;
   cursor: pointer;
   padding: 1rem;
-  width: 100%;
   text-align: center;
   text-transform: uppercase;
   background: green;
@@ -83,6 +115,13 @@ article {
   font-size: 1rem;
   opacity: 0.8;
   transition: 0.5s all ease;
+  float: right;
+  display: flex;
+  align-items: center;
+
+  span {
+    padding-left: 0.5rem;
+  }
 
   &.show {
     bottom: 0;
