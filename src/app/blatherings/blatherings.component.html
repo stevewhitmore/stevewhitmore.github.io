@@ -1,5 +1,5 @@
 <div *ngIf="postContent$ | async as postContent">
-    <section class="text-content">
+    <section class="text-content" [ngClass]="{'post-landing': !postName}">
         <div class="inner-container">
             <nav *ngIf="menuItems$ | async as menuItems">
                 <ul>
@@ -12,10 +12,16 @@
                     </li>
                 </ul>
             </nav>
-            <article [ngClass]="{'post-landing': !postName}">
+            <article>
                 <markdown [data]="postContent"></markdown>
             </article>
         </div>
     </section>
     <sw-footer></sw-footer>
 </div>
+
+<button type="button"
+        class="back-to-top"
+        (click)="scrollToTop()">
+    back to top
+</button>

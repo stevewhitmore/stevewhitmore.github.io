@@ -11,7 +11,7 @@ a {
  
 .text-content {
   background-color: $dark;
-  padding: 5rem 0;
+  padding: 0;
 }
 
 .inner-container {
@@ -31,7 +31,11 @@ a {
   }
 
   h2, h3 {
-    margin: 1rem 0 0;
+    margin: 2rem 0;
+  }
+
+  h2 + h3 {
+    margin-top: 0;
   }
 
   h2 {

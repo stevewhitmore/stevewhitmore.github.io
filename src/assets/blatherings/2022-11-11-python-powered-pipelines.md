@@ -226,9 +226,13 @@ The `NPM_TOKEN` is an environment variable we'll pass from the project's setting
 ### Creating masked environment variables in GitLab
 
 1. Go to the project Settings > CI/CD
+
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jfykl843lh7goyg8927q.png)
+
 2. Expand the "Variables" section and click "Add Variable"
+
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vrd3pd723j4j5xo8hou1.png)
+
 3. Add your auth token to your project. Note the **Masked** box is checked.
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/drtqooao9vqbrsxse28i.png)
