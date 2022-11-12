@@ -6,11 +6,16 @@
 
 nav {
   border-right: 1px solid green;
+  min-width: 450px;
 
   li {
     list-style: none;
+    font-size: 1rem;
     text-align: right;
-    margin-top: 1rem;;
+    margin-top: 1rem;
+    &:first-child {
+      text-align: left;
+    }
   
     a {
       padding: 0.5rem;
@@ -25,10 +30,32 @@ nav {
   }
 }
 
-li:first-child {
-  text-align: left;
-}
-
 .inner-container {
   max-width: 100%;
+}
+
+article {
+  margin: 2rem 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  markdown {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+
+    blockquote {
+      border-left: 2px solid #ccc;
+      color: #ccc;
+      background: #1a1d25;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
 }

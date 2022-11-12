@@ -1,5 +1,7 @@
 # State Management Is Easy Now!? An Introduction to Observable Store
 
+![Surprised man](https://res.cloudinary.com/practicaldev/image/fetch/s--QNHg0iNG--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pmt8893tgs2jmpq0n3bm.jpg)
+
 Oh application state. The source of so many bugs. React has [Redux](https://redux.js.org/), Vue has [Pinia](https://pinia.vuejs.org/), and Angular has [NgRx](https://ngrx.io) as their most used state management libraries. 
 
 NgRx is a great solution for folks well versed in Angular-ese and can make tackling problems with enterprise-sized applications way easier. There's a very big application I work on where we as a team started using NgRx to help us out for this very reason.
@@ -34,7 +36,8 @@ npm i @codewithdan/observable-store
 
 Create a new class. It'll be treated as a service so it'll have that `@Injectable` decorator. Extend the `ObservableStore` class and type it with a model:
 
-*customer-store.ts*
+<p class="caption">customer-store.ts</p>
+
 ```typescript
 export interface StoreStateModel {
   customers: CustomerModel[],
@@ -76,7 +79,8 @@ Next, we have the `get()` method that gets that state and wraps it up nice in an
 
 Now we can inject the CustomersStore into our component and capture the state changes in an Observable class property:
 
-*app.component.ts*
+<p class="caption">app.component.ts</p>
+
 ```typescript
 export class AppComponent {
   state$ = this.customersStore.stateChanged;
@@ -86,7 +90,8 @@ export class AppComponent {
 
 So far, so good. But how do we handle getting data? There's a couple different approaches we can take. One would be to add our data service to our CustomersStore, keeping it as the single source of truth and our app nice and clean.
 
-*customer-store.ts*
+<p class="caption">customer-store.ts</p>
+
 ```typescript
 export interface StoreStateModel {
   customers: CustomerModel[],
@@ -130,7 +135,7 @@ export class CustomersStore extends ObservableStore<StateStoreModel> {
 
 Back in our `AppComponent` we can fetch it in the `ngOnInit` hook.
 
-*app.component.ts*
+<p class="caption">app.component.ts</p>
 
 ```typescript
 export class AppComponent implements OnInit {
@@ -160,14 +165,15 @@ We should probably display our customers in its own component to keep our compon
 
 Let's update the `AppComponent`'s html to pass the state to our new component:
 
-*app.component.html*
+<p class="caption">app.component.html</p>
 ```html
 <div *ngIf="state$ | async as state">
     <app-customers [state]="state"></app-customers>
 </div>
 ```
 
-*customers.component.ts*
+<p class="caption">customers.component.ts</p>
+
 ```typescript
 export class CustomersComponent implements OnChanges {
   @Input() state: StoreStateModel = { customers: [], addMode: false };
@@ -189,7 +195,7 @@ export class CustomersComponent implements OnChanges {
 
 Our `customersStore` was injected as a public property so we can directly call `initAddMode()` in the html.
 
-*customers.component.html*
+<p class="caption">customers.component.html</p>
 
 ```html
 <!-- a table or something to display the data -->
@@ -202,7 +208,7 @@ Our `customersStore` was injected as a public property so we can directly call `
 </button>
 ```
 
-*customers-store.ts*
+<p class="caption">customers-store.ts</p>
 
 ```typescript
 initAddMode(): void {
@@ -227,7 +233,7 @@ Let's assume you have another component `AddCustomerComponent` and you have its 
 
 `AddCustomerComponent` would look something like this:
 
-*add-customer.component.ts*
+<p class="caption">add-customer.component.ts</p>
 
 ```typescript
 export class AddCustomerComponent {
@@ -266,7 +272,7 @@ Like with the `CustomersComponent` we injected `customersStore` as a public prop
   </button>
 ```
 
-*customers-store.ts*
+<p class="caption">customers-store.ts</p>
 
 ```typescript
 addCustomer(customer: CustomerModel): void {
@@ -313,7 +319,8 @@ Yes, I write my tests after I write my application code. Yes, I know it's better
 
 Let's start off with creating some mock data and a stub for our DataService:
 
-*customers-store.spec.ts*
+<p class="caption">customers-store.spec.ts</p>
+
 ```typescript
 const mockData = require('../../test-data/customers.json');
 const dataServiceStub = {
@@ -323,7 +330,8 @@ const dataServiceStub = {
 
 Next, the setup. Just like with any other service we'll want to inject this class into the TestBed:
 
-*customers-store.spec.ts*
+<p class="caption">customers-store.spec.ts</p>
+
 ```typescript
 describe('CustomersStore', () => {
   let customersStore: CustomersStore;

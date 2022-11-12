@@ -1,31 +1,31 @@
 # Python Powered Pipelines? Preposterous!
 
+![Python woman image](https://res.cloudinary.com/practicaldev/image/fetch/s--WIpmUB8k--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tr2e4wrn2ynz2d9vbdd3.jpg)
+
 No, not preposterous. Powerful.
 
 DevOps is all about rapid delivery. Using Python to make your pipelines "smart" can help you achieve that goal.
 
-Let's say you have a suite of Angular libraries your team uses for their applications. A robust pipeline for this project will include the following:
+Let's say you have a suite of Angular libraries your team created to use for their applications. A robust pipeline for this project will include the following:
 
-* validation jobs that make sure
-  * there's no "fit" or "fdescribe" to narrow down unit tests
-  * there's no "dist" or ".angular" folders present
-  * eslint passes
-* tests
-  * unit tests
-  * integration tests
-* security scans
-  * npm audit
-  * SAST scans (SonarQube, Fortify, etc)
-* publication
-  * snapshots
-  * release candidates
-  * releases
+- validation jobs that make sure
+  - there's no "fit" or "fdescribe" to narrow down unit tests
+  - there's no "dist" or ".angular" folders present
+  - eslint passes
+- tests
+  - unit tests
+  - integration tests
+- security scans
+  - npm audit
+  - SAST scans (SonarQube, Fortify, etc)
+- publication
+  - snapshots
+  - release candidates
+  - releases
 
-At an enterprise level, you could be dealing with upwards of 20 libraries. You *could* have a job for each library using the default (Bash).
+At an enterprise level, you could be dealing with upwards of 20 libraries. You *could* have a job for each library. Speaking from experience, having jobs for each will quickly turn your pipeline into a big nasty pile of spaghetti. Nobody wants to deal with a big nasty pile of spaghetti.
 
-Speaking from experience, having jobs for each will quickly turn your pipeline into a big nasty pile of spaghetti. Nobody wants to deal with a big nasty pile of spaghetti.
-
-Worse still, the time it'll take for your pipelines to run will slow things down to an agonizing crawl and have your team pulling their hair out in frustration.
+Worse still, the time it'll take for your pipelines to run will slow things down to an agonizing crawl and have your team pulling their hair out in frustration every time they push a change up.
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ixh82g3810q8m8phyyr1.jpg)
 
@@ -37,7 +37,7 @@ Let's use a mock scenario to illustrate my point. For the sake of brevity we'll 
 - Run unit tests
 - Publish snapshots off of our feature branches
 
-[Here's a project](https://github.com/stevewhitmore/python-powered-pipelines) that demonstrates this using both GitHub Actions and GitLab CI/CD. I'm including both because I think most people use GitHub Actions but I know many companies also use GitLab for their enterprise applications.
+[Here's a project](https://github.com/stevewhitmore/python-powered-pipelines) that demonstrates this using both GitHub Actions and GitLab CI/CD. I'm including both because I think most people use GitHub Actions but I know many companies also use GitLab for their enterprise applications (plus I'm way more familiar with GitLab CI/CD).
 
 The major points I'll be going over will be:
 
@@ -84,28 +84,70 @@ Super duper. Assuming you know your way around Docker we can publish our image t
 
 ### GitHub Actions
 
-### GitLab CI/CD
+As far as I can tell GitHub doesn't support using a custom pipeline runner image directly. You'll need to wrap a natively supported image around it and set your image as the "container". Kinda icky but it will still serve you.
 
-The CI file will be pretty simple since we're putting nearly all the pipeline logic in our Python script.
+> **Disclaimer:** I'm still learning my way around GitHub Actions so the below yml file is far from perfect. It *works* but I'd love to hear about ways it could be improved/optimized.
+
+<p class="caption">.github/workflows/ci.yml</p>
 
 ```yml
-# Point to wherever your Docker image is registered
+name: CI
+on: push
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    container: stevewhitmore/nodejs-python
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Allow me to run my script
+        run: git config --global safe.directory '*'
+
+      - name: Lint
+        run: python scripts/ci.py eslint
+
+      - name: Unit Tests
+        run: python scripts/ci.py unit_tests
+
+      - name: Publish Snapshots
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+          python scripts/ci.py publish_snapshots
+```
+
+### GitLab CI/CD
+
+<p class="caption">.gitlab-ci.yml</p>
+
+```yml
 image: stevewhitmore/nodejs-python
 
-# Set the stages
 stages:
   - validation
   - test
   - snapshot
 
-# Cache the node_modules folder for faster jobs
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
     - .npm/
 
-# Lint your pipeline script!
 pylint:
   stage: validation
   script:
@@ -114,8 +156,6 @@ pylint:
   except:
     - tags
 
-# The below jobs just need a stage, to point to the cached 
-# node_modules folder, and call the Python script. That's it!
 eslint:
   stage: validation
   cache:
@@ -148,8 +188,6 @@ npm_publish_snapshot:
 
 ## Handling secrets
 
-You may have noticed in the `npm_publish_snapshot` job there's a line `echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc`. 
-
 NPM needs to know where your packages (libraries) will be registered and there needs to be some kind of authentication. It gets this information from the `.npmrc` file. Assuming you're publishing to npmjs.org, your pipeline's `.npmrc` file will look pretty similar. 
 
 > **Note:** This `.npmrc` file is created and only exists during the lifecycle of the pipeline job. DON'T use the `.npmrc` file from your personal workstation! 
@@ -172,7 +210,8 @@ The `NPM_TOKEN` is an environment variable we'll pass from the project's setting
 
 4. Copy the token to a file so you don't lose it.
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m59n7raxj1rjydpdm212.png)*No, you can't use this token. It has been deleted* 😉
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m59n7raxj1rjydpdm212.png)
+*No, you can't use this token. It has been deleted* 😉
 
 ### Creating Actions secrets in GitHub
 
@@ -338,7 +377,17 @@ def handle_snapshot_publication(library):
     subprocess.check_call(f"npm publish --access=public ./dist/{library}", shell=True)
 ```
 
-By now you should be seeing the pattern. This post is already pretty long but if you like what you see and want to learn more I encourage you to take a look at my [example project](https://github.com/stevewhitmore/python-powered-pipelines) and start experimenting. 
+By now you should be seeing the pattern. You can see from the job outputs that the pipeline is only running the jobs on the changed libraries:
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/c7krn076ly78b96sighw.png)
+
+<p class="caption">GitHub</p>
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wl8rltfk462lqh1e9qgg.png)
+
+<p class="caption">GitLab</p>
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/o0hdnv4ki3frnvl4gm4j.png)
 
 Enjoy a less painful pipeline with the power of Python! 🦸‍♂️
 

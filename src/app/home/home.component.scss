@@ -1,24 +1,29 @@
 @import '../shared/shared-styles.scss';
-  
-.inner-container .text-section {
-  flex-grow: 1;
-  padding-right: 25px;
-}
 
-.inner-container .welcome-text {
-  color: #9aa5b1;
-  font-weight: 700;
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-}
+.text-content {
 
-.inner-container .profile-pic {
-  display: flex;
-  align-items: center;
-}
+  .inner-container {
+    .text-section {
+      flex-grow: 1;
+      padding-right: 25px;
 
-img {
-  border-radius: 20rem;
+      .welcome-text {
+        color: #9aa5b1;
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+      }
+    }
+    
+    .profile-pic {
+      display: flex;
+      align-items: center;
+
+      img {
+        border-radius: 20rem;
+      }
+    }
+  }
 }
 
 @media (max-width: 900px) {
