@@ -12,6 +12,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategy } from './custom-route-strategy';
+import { PostComponent } from './blatherings/post/post.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { CustomReuseStrategy } from './custom-route-strategy';
     BlatheringsComponent,
     FooterComponent,
     HomeComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +29,7 @@ import { CustomReuseStrategy } from './custom-route-strategy';
     AppRoutingModule,
     HttpClientModule,
     MarkdownModule.forRoot(),
+    ReactiveFormsModule,
   ],
   providers: [
     BlatheringsDataService,

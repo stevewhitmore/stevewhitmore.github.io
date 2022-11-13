@@ -1,4 +1,101 @@
-@import '../shared/shared-styles.scss';
+$green: #02b802;
+$dark: #252934;
+
+a {
+    transition: 0.5s all ease;
+    color: #fff;
+  &:hover {
+    color: $green;
+  }
+}
+
+a.route-back {
+  transition: 0.5s all ease;
+
+  &:hover {
+    svg path {
+      fill: $green;
+    }
+  }
+}
+ 
+.text-content {
+  background-color: $dark;
+  padding: 0;
+}
+
+.inner-container {
+  line-height: 1.5;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
+  max-width: 1280px;
+  box-sizing: border-box;
+  
+  h1 {
+    color: $green;
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  h2, h3 {
+    margin: 2rem 0;
+  }
+
+  h2 + h3 {
+    margin-top: 0;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3{
+    font-size: 1.75rem;
+  }
+
+  p, ul, ol {
+    font-size: 1.45rem;
+    margin-bottom: 2rem;
+  }
+
+  p {
+    margin-bottom: 2rem;
+
+    &.caption {
+      font-size: 1rem;
+      font-style: italic;
+      margin: 0;
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  code[class*="language-"], pre[class*="language-"] {
+    margin: 0 0 2rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  code {
+    font-size: 1rem;
+  }
+
+  ul, ol {
+    margin-left: 1rem;
+
+    ul {
+      margin-left: 1rem;
+      margin-bottom: 0;
+    }
+  }
+  
+}
+
 
 .text-content {
   padding: 5rem 0;

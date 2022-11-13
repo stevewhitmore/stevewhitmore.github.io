@@ -1,9 +1,10 @@
 import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Observable, of, Subscription } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, merge, Observable, of, startWith, Subscription, switchMap, tap } from 'rxjs';
 import 'prismjs/components/prism-markup-templating';
 import { BlatheringsDataService } from './blatherings-data.service';
 import { ViewportScroller } from '@angular/common';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'sw-blatherings',
@@ -12,38 +13,43 @@ import { ViewportScroller } from '@angular/common';
   encapsulation: ViewEncapsulation.None,
 })
 export class BlatheringsComponent implements OnInit, OnDestroy {
-  menuItems$: Observable<any> = this.blatheringsDataService.getPageTitles();
+  displayPosts$: Observable<any> = of();
   postContent$: Observable<any> = of();
-  routerSub: Subscription = new Subscription();
+  searchFieldSub: Subscription = new Subscription();
   postName = '';
-  hideMenu = false;
-  // @ViewChild('h1') h1: ElementRef | undefined;
+  searchField = new FormControl('');
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router,
     private blatheringsDataService: BlatheringsDataService,
-    private viewportScroller: ViewportScroller
   ) {}
 
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(): void {
-    const pageDownPosition = this.viewportScroller.getScrollPosition()[1];
-    const scrollToTopBtnEl = document.querySelector('.back-to-top');
-    
-    if (pageDownPosition > 1500) {
-
-      if (!scrollToTopBtnEl?.classList.contains('show')) {
-        scrollToTopBtnEl?.classList.add('show');
-      }
-    } else {
-      scrollToTopBtnEl?.classList.remove('show');
-    }
-  }
 
   ngOnInit(): void {
     this.getPostContent();
-    this.listenForRouteChange();
+
+    const menuItems$ = this.blatheringsDataService.getPageTitles();
+
+    const searchFieldChanges$ = this.searchField.valueChanges
+      .pipe(
+        startWith(''),
+      );
+
+    this.displayPosts$ = combineLatest([menuItems$, searchFieldChanges$])
+        .pipe(
+          tap(console.log),
+          map(([menuItems, searchFieldChanges]) => {
+            if (searchFieldChanges) {
+              return menuItems.filter((item: any) => {
+                return item.title.toLowerCase().includes(searchFieldChanges.toLowerCase())
+                  || item.date.includes(searchFieldChanges)
+              });
+            }
+            return menuItems;
+          }), 
+          tap(console.log)
+        )
+        
   }
 
   getPostContent() {
@@ -51,30 +57,9 @@ export class BlatheringsComponent implements OnInit, OnDestroy {
     this.postContent$ = this.blatheringsDataService.getPageContent(this.postName)
   }
 
-  listenForRouteChange() {
-    this.routerSub = this.router.events
-      .subscribe({
-        next: event => {
-          if (event instanceof NavigationEnd) {
-            this.getPostContent();
-          }
-        }
-      });
-  }
-
-  scrollToTop() {
-    // this.viewportScroller.scrollToPosition([0, 0]);
-    const h1El = document.querySelector('h1');
-      if (h1El) {
-        h1El.scrollIntoView({behavior: 'smooth'}); 
-      }
-  }
-
-  toggleMenu() {
-    this.hideMenu = !this.hideMenu;
-  }
-
   ngOnDestroy(): void {
-    this.routerSub.unsubscribe;
+      if (this.searchFieldSub) {
+        this.searchFieldSub.unsubscribe();
+      }
   }
 }
