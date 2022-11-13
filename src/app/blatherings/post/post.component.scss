@@ -1,12 +1,4 @@
 @import '../../shared/shared-styles.scss';
-
-a {
-    transition: 0.5s all ease;
-    color: #fff;
-  &:hover {
-    color: $green;
-  }
-}
  
 .text-content {
   background-color: $dark;
@@ -83,6 +75,9 @@ a {
     }
   }
   
+  span {
+    font-size: 0.5rem;
+  }
 }
 
 

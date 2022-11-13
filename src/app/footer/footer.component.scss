@@ -9,10 +9,11 @@ section.social-wrap {
   section.social-wrap .inner-container {
     min-width: 50%;
     justify-content: space-between;
+    display: flex;
   }
   
   section.social-wrap a {
-    display: block;
+    display: inline-block;
     font-size: 1.75rem;
     color: $dark;
     text-decoration: none;

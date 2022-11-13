@@ -1,6 +1,6 @@
 # Python Powered Pipelines? Preposterous!
 
-devops,python,angular,productivity
+devops, python, angular, productivity
 
 ![Python woman image](https://res.cloudinary.com/practicaldev/image/fetch/s--WIpmUB8k--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tr2e4wrn2ynz2d9vbdd3.jpg)
 

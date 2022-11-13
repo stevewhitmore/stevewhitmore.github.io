@@ -1,6 +1,6 @@
 # State Management Is Easy Now!? An Introduction to Observable Store
 
-angular,architecture,javascript
+angular, architecture, javascript
 
 ![Surprised man](https://res.cloudinary.com/practicaldev/image/fetch/s--QNHg0iNG--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pmt8893tgs2jmpq0n3bm.jpg)
 

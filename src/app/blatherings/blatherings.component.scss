@@ -1,23 +1,5 @@
 @import '../shared/shared-styles.scss';
 
-a {
-    transition: 0.5s all ease;
-    color: #fff;
-  &:hover {
-    color: $green;
-  }
-}
-
-a.route-back {
-  transition: 0.5s all ease;
-
-  &:hover {
-    svg path {
-      fill: $green;
-    }
-  }
-}
- 
 .text-content {
   background-color: $dark;
   padding: 0;
@@ -32,13 +14,7 @@ a.route-back {
   padding: 0 2rem;
   max-width: 1280px;
   box-sizing: border-box;
-  
-  h1 {
-    color: $green;
-    font-weight: 700;
-    font-size: 3rem;
-    margin-bottom: 2rem;
-  }
+
 
   h2, h3 {
     margin: 2rem 0;
@@ -128,6 +104,8 @@ a.route-back {
         padding: 1rem;
         display: block;
         text-decoration: none;
+        height: 100%;
+        box-sizing: border-box;
         
         &:hover {
           background: green;

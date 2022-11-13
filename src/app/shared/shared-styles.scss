@@ -1,5 +1,20 @@
 $green: #02b802;
 $dark: #252934;
+  
+h1 {
+  color: $green;
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+a {
+  transition: 0.5s all ease;
+  color: #fff;
+  &:hover {
+    color: $green;
+  }
+}
 
 a.route-back {
   position: sticky;
