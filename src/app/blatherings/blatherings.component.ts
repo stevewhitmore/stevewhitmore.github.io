@@ -43,6 +43,7 @@ export class BlatheringsComponent implements OnInit, OnDestroy {
               return menuItems.filter((item: any) => {
                 return item.title.toLowerCase().includes(searchFieldChanges.toLowerCase())
                   || item.date.includes(searchFieldChanges)
+                  || item.tags.includes(searchFieldChanges);
               });
             }
             return menuItems;

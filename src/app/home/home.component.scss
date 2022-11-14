@@ -22,6 +22,7 @@ a.route-back {
 .text-content {
   background-color: $dark;
   padding: 0;
+  min-height: unset;
 }
 
 .inner-container {

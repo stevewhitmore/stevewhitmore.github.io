@@ -1,5 +1,9 @@
 @import '../shared/shared-styles.scss';
 
+header {
+  text-align: center;
+}
+
 .text-content {
   background-color: $dark;
   padding: 0;
@@ -86,6 +90,7 @@
     padding: 1rem;
     width: 100%;
     font-size: 1rem;
+    box-sizing: border-box;
   }
 
   nav {
@@ -94,10 +99,10 @@
     ul {
       list-style: none;
       display: grid;
-      grid-template-columns: repeat(3, 33%);
+      grid-template-columns: calc(33% - 8px) calc(33% - 8px) calc(33% - 8px);
       grid-auto-rows: 1fr;
-      row-gap: 1rem;
-      column-gap: 1rem;
+      row-gap: 15px;
+      column-gap: 15px;
 
       a {
         border: 1px dashed $green;
@@ -118,5 +123,24 @@
         }
       }
     }
+  }
+}
+
+
+@media (max-width: 860px) {
+  .inner-search-box {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 620px) {
+  .inner-search-box nav ul {
+    grid-template-columns: calc(50% - 8px) calc(50% - 8px);
+  }
+}
+
+@media (max-width: 480px) {
+  .inner-search-box nav ul {
+    grid-template-columns: 100%;
   }
 }
