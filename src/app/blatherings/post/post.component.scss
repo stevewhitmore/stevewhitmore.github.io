@@ -92,7 +92,12 @@ article {
       flex-direction: column;
       align-content: center;
       justify-content: center;
-  
+
+      p.tagline {
+        line-height: 1.5rem;
+        font-size: 1rem;
+      }
+
       blockquote {
         border-left: 2px solid #ccc;
         color: #ccc;
@@ -138,17 +143,33 @@ article {
 
   @media (max-width: 620px) {
     .inner-container {
+      article {
+        width: 100%;
+
+      a.route-back {
+        position: relative;
+      }
+
       h1 {
         font-size: 2rem;
       }
 
-      p {
+      p, ul, ol {
         font-size: 1rem;
         margin-bottom: 1rem;
       }
 
-      .inner-container code[class*=language-], .inner-container pre[class*=language-] {
+      h2 {
+        font-size: 1rem;
+      }
+
+      h2, h3 {
+        margin: 1rem 0;
+      }
+
+      code[class*=language-], pre[class*=language-] {
         font-size: 12px;
       }
-    } 
+      }
+    }
   }

@@ -1,10 +1,11 @@
 # State Management Is Easy Now!? An Introduction to Observable Store
 
-angular, architecture, javascript
-
 ![Surprised man](https://res.cloudinary.com/practicaldev/image/fetch/s--QNHg0iNG--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pmt8893tgs2jmpq0n3bm.jpg)
 
-Oh application state. The source of so many bugs. React has [Redux](https://redux.js.org/), Vue has [Pinia](https://pinia.vuejs.org/), and Angular has [NgRx](https://ngrx.io) as their most used state management libraries. 
+<p class="tagline"><i>angular, architecture, javascript<br>
+Crossposted to <a href="https://dev.to/stevewhitmore/state-management-is-easy-now-an-introduction-to-observable-store-15ij">Dev.to</a>.</i></p>
+
+Oh application state. The source of so many bugs. React has [Redux](https://redux.js.org/), Vue has [Pinia](https://pinia.vuejs.org/), and Angular has [NgRx](https://ngrx.io) as their most used state management libraries.
 
 NgRx is a great solution for folks well versed in Angular-ese and can make tackling problems with enterprise-sized applications way easier. There's a very big application I work on where we as a team started using NgRx to help us out for this very reason.
 
