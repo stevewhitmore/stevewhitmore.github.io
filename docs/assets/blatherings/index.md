@@ -1,3 +1,0 @@
-# Blatherings
-
-musings, and contemplations.
