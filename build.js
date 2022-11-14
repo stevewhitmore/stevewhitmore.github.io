@@ -15,8 +15,9 @@ filesListJson = [];
 mdFiles.forEach(file => {
     const contents = fs.readFileSync(`${blatheringsPath}/${file}`, {encoding:'utf8', flag:'r'});
     const firstLine = contents.split(/\r?\n/)[0];
-    const tagsLine = contents.split(/\r?\n/)[2];
-    
+    const tagsLineDirty = contents.match(/\>.+?\</g)[0];
+    const tagsLine = tagsLineDirty.substring(1, tagsLineDirty.length -1);
+
     const fileMeta = {
         name: file,
         title: firstLine.slice(2),

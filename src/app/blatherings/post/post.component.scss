@@ -38,7 +38,7 @@
   }
 
   p, ul, ol {
-    font-size: 1.45rem;
+    font-size: 1rem;
     margin-bottom: 2rem;
   }
 
@@ -63,7 +63,7 @@
   }
 
   code {
-    font-size: 1rem;
+    font-size: 0.75rem;
   }
 
   ul, ol {
@@ -75,9 +75,6 @@
     }
   }
   
-  span {
-    font-size: 0.5rem;
-  }
 }
 
 
@@ -96,6 +93,7 @@ article {
       p.tagline {
         line-height: 1.5rem;
         font-size: 1rem;
+        font-style: italic;
       }
 
       blockquote {
@@ -142,34 +140,33 @@ article {
   }
 
   @media (max-width: 620px) {
+    a.route-back {
+      position: relative;
+    }
     .inner-container {
       article {
         width: 100%;
 
-      a.route-back {
-        position: relative;
-      }
+        h1 {
+          font-size: 2rem;
+        }
 
-      h1 {
-        font-size: 2rem;
-      }
+        p, ul, ol {
+          font-size: 1rem;
+          margin-bottom: 1rem;
+        }
 
-      p, ul, ol {
-        font-size: 1rem;
-        margin-bottom: 1rem;
-      }
+        h2 {
+          font-size: 1rem;
+        }
 
-      h2 {
-        font-size: 1rem;
-      }
+        h2, h3 {
+          margin: 1rem 0;
+        }
 
-      h2, h3 {
-        margin: 1rem 0;
-      }
-
-      code[class*=language-], pre[class*=language-] {
-        font-size: 12px;
-      }
+        code[class*=language-], pre[class*=language-] {
+          font-size: 12px;
+        }
       }
     }
   }
