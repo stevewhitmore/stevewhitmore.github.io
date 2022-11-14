@@ -1,0 +1,25 @@
+<div *ngIf="postContent$ | async as postContent">
+    <section class="text-content">
+        <a class="route-back" [routerLink]="postName ? '/blatherings' : ''">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="white" d="M11.92,19.92L4,12L11.92,4.08L13.33,5.5L7.83,11H22V13H7.83L13.34,18.5L11.92,19.92M4,12V2H2V22H4V12Z" />
+            </svg>
+        </a>
+        <div class="inner-container">
+            <article>
+                <markdown [data]="postContent"></markdown>
+            </article>
+        </div>
+    </section>
+    <sw-footer></sw-footer>
+    <button type="button"
+        class="back-to-top"
+        (click)="scrollToTop()">
+        back to top
+        <span>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="white" d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" />
+            </svg>
+        </span>
+    </button>
+</div>
