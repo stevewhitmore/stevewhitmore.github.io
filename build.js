@@ -21,7 +21,7 @@ mdFiles.forEach(file => {
         name: file,
         title: firstLine.slice(2),
         tags: tagsLine,
-        date: file.match(/(\d*)-/g).join('').slice(0, -2),
+        date: file.match(/(\d{4})-(\d{2})-(\d{2})/g).join(''),
     };
     filesListJson.push(fileMeta);
 })
