@@ -5,23 +5,172 @@
   position: relative;
 }
 
-html { height: 100%; }
+html {
+  height: 100%;
+}
 
 body {
   min-height: 100%;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   display: block;
   cursor: default;
 }
 
+a {
+  transition: 0.5s ease all;
+}
+
+a:hover {
+  color: #02b802;
+}
+
 .container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  display: flex;
+}
+
+aside, section.resume {
+  padding: 3rem;
 }
 
 aside {
   background-color: #252934;
-  padding: 5rem 0;
   color: #fff;
+  width: 60%;
+  box-sizing: border-box;
+}
+
+aside a {
+  color: #fff;
+}
+
+aside h2, aside h3 {
+  padding: 1rem;
+  background: #1c1f29;
+}
+
+article {
+}
+
+h2 {
+  margin-top: 1rem;
+}
+
+article > div {
+  margin: 1rem;
+}
+
+hr {
+  height: 5px;
+  background: #02b802;
+  margin: 1rem 0;
+}
+
+h1 {
+  color: #02b802;
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+h1 span {
+  font-size: 1.5rem;
+  display: block;
+}
+
+h3 {
+  margin: 1rem 0
+}
+ul {
+  margin: 0.5rem 2rem;
+}
+
+li {
+  line-height: 1.5rem
+}
+
+.resume > div {
+  padding: 0.5rem 0;
+}
+
+.sticky-button {
+  position: sticky;
+  bottom: 0;
+  text-align: right;
+}
+button {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.5s ease all;
+  background-color: transparent;
+}
+button:hover {
+  opacity: 1;
+}
+svg {
+  width: 100px;
+  height: 100px;
+}
+path {
+  color: #02b802;
+}
+
+@media print {
+  .container {
+    display: block;
+  }
+
+  * {
+    margin: 0;  
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  h1 span {
+    font-size: 1rem;
+  }
+
+  aside h2, aside h3, h2, h3 {
+    margin: 0;
+    padding: 0;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  div {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width:1024px) {
+  .container {
+    flex-direction: column;
+  }
+
+  aside {
+    width: 100%;
+  }
+  label {
+    display: block;
+  }
+  aside > div {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 720px) {
+  aside > div {
+    flex-direction: column  ;
+  }
 }
