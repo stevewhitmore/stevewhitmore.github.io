@@ -78,6 +78,7 @@ h1 span {
 .intro {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .intro img {
@@ -171,5 +172,10 @@ path {
 @media (max-width: 720px) {
   aside > div {
     flex-direction: column  ;
+  }
+
+  h1 {
+    margin: 0;
+    text-align: left;
   }
 }
