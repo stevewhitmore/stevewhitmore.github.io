@@ -48,9 +48,6 @@ aside h2, aside h3 {
   background: #1c1f29;
 }
 
-article {
-}
-
 h2 {
   margin-top: 1rem;
 }
@@ -69,12 +66,23 @@ h1 {
   color: #02b802;
   font-weight: 700;
   font-size: 3rem;
-  margin-bottom: 2rem;
+  margin-left: 2rem;
+  text-align: right;
 }
 
 h1 span {
   font-size: 1.5rem;
   display: block;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+}
+
+.intro img {
+  border-radius: 25rem;
+  width: 150px;
 }
 
 h3 {
@@ -113,6 +121,34 @@ svg {
 }
 path {
   color: #02b802;
+}
+
+@media print {
+  img {
+    display: none;
+  }
+  h1, h1 span, aside h2, h2, aside, aside a {
+    color: #000;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+  }
+
+  article {
+    float: left;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+  article > div {
+    margin: 1rem 0;
+  }
+
+  .sticky-button {
+    display: none;
+  }
 }
 
 @media (max-width:1024px) {
