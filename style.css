@@ -115,65 +115,6 @@ path {
   color: #02b802;
 }
 
-@media print {
-  .container {
-    display: block;
-  }
-
-  * {
-    margin: 0;  
-    padding: 0;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-    color: #fff;
-  }
-  h1 span {
-    font-size: 1rem;
-  }
-
-  aside h2, aside h3, h2, h3 {
-    margin: 0;
-    padding: 0;
-  }
-
-  h2 {
-    font-size: 1.25rem;
-  }
-
-  h3 {
-    font-size: 1rem;
-  }
-
-  div {
-    margin: 0;
-    padding: 0;
-  }
-
-  aside, section.resume {
-    float: left;
-    display: inline;
-  }
-
-  article > div {
-    margin: 1rem 0;
-  }
-
-  .container article {
-    width: 40%;
-    float: left;
-  }
-
-  .container aside h1, .container aside, .container aside a {
-    color: #000;
-  }
-
-  .sticky-button {
-    display: none;
-  }
-}
-
 @media (max-width:1024px) {
   .container {
     flex-direction: column;
