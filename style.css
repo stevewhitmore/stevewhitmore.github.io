@@ -97,14 +97,14 @@ li {
   bottom: 0;
   text-align: right;
 }
-button {
+.sticky-button a {
   padding: 1rem 2rem;
   cursor: pointer;
   opacity: 0.5;
   transition: 0.5s ease all;
   background-color: transparent;
 }
-button:hover {
+.sticky-button a:hover {
   opacity: 1;
 }
 svg {
@@ -149,6 +149,28 @@ path {
   div {
     margin: 0;
     padding: 0;
+  }
+
+  aside, section.resume {
+    float: left;
+    display: inline;
+  }
+
+  article > div {
+    margin: 1rem 0;
+  }
+
+  .container article {
+    width: 40%;
+    float: left;
+  }
+
+  .container aside h1, .container aside, .container aside a {
+    color: #000;
+  }
+
+  .sticky-button {
+    display: none;
   }
 }
 
