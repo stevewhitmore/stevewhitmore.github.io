@@ -18,17 +18,22 @@ body {
 
 a {
   transition: 0.5s ease all;
+  text-decoration: none;
 }
 
 a:hover {
   color: #02b802;
 }
 
+a span {
+  text-decoration: underline;
+}
+
 .container {
   display: flex;
 }
 
-aside, section.resume {
+aside, main.resume {
   padding: 3rem;
 }
 
@@ -40,10 +45,11 @@ aside {
 }
 
 aside a {
+  display: block;
   color: #fff;
 }
 
-aside h2, aside h3 {
+aside h2 {
   padding: 1rem;
   background: #1c1f29;
 }
@@ -52,7 +58,7 @@ h2 {
   margin-top: 1rem;
 }
 
-article > div {
+.social > div {
   margin: 1rem;
 }
 
@@ -89,6 +95,7 @@ h1 span {
 h3 {
   margin: 1rem 0
 }
+
 ul {
   margin: 0.5rem 2rem;
 }
@@ -101,33 +108,23 @@ li {
   padding: 0.5rem 0;
 }
 
-.sticky-button {
-  position: sticky;
-  bottom: 0;
-  text-align: right;
-}
-.sticky-button a {
-  padding: 1rem 2rem;
-  cursor: pointer;
-  opacity: 0.5;
-  transition: 0.5s ease all;
-  background-color: transparent;
-}
-.sticky-button a:hover {
-  opacity: 1;
-}
 svg {
-  width: 100px;
-  height: 100px;
-}
-path {
-  color: #02b802;
+  display: none;
 }
 
 @media print {
+  @page {
+    margin: 0;
+  }
+  
+  body  {
+    margin: 1.6cm;
+  }
+
   img {
     display: none;
   }
+
   h1, h1 span, aside h2, h2, aside, aside a {
     color: #000;
     text-align: left;
@@ -136,20 +133,23 @@ path {
     font-size: 1rem;
   }
 
-  article {
-    float: left;
+  aside article {
+    display: none;
   }
 
   h1 {
+    width: 100%;
     font-size: 1.5rem;
   }
-  article > div {
+
+  h1, h1 span {
+    text-align: center;
+  }
+
+  .social > div {
     margin: 1rem 0;
   }
 
-  .sticky-button {
-    display: none;
-  }
 }
 
 @media (max-width:1024px) {
@@ -160,9 +160,11 @@ path {
   aside {
     width: 100%;
   }
+
   label {
     display: block;
   }
+
   aside > div {
     display: flex;
     justify-content: space-between;
@@ -170,12 +172,49 @@ path {
 }
 
 @media (max-width: 720px) {
-  aside > div {
-    flex-direction: column  ;
+  .intro img {
+    margin-bottom: 1rem;
   }
 
   h1 {
     margin: 0;
-    text-align: left;
+    text-align: center;
   }
+
+  aside, main.resume {
+    padding: 1rem;
+  }
+
+  aside {
+    padding: 2rem 0;
+  }
+
+  aside > div {
+    flex-direction: column  ;
+  }
+
+  aside h2:first-child, label, .social div:first-child, .social span {
+    display: none;
+  }
+
+  .social {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+  }
+
+  svg {
+    display: block;
+    width: 50px;
+    height: 50px;
+  }
+  
+  path {
+    color: #fff;
+  }
+  
+  a:hover path {
+    fill: #02b802;
+  }
+
 }
