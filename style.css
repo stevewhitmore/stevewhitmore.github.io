@@ -28,7 +28,7 @@ a:hover {
   display: flex;
 }
 
-aside, section.resume {
+aside, main.resume {
   padding: 3rem;
 }
 
@@ -101,30 +101,26 @@ li {
   padding: 0.5rem 0;
 }
 
-.sticky-button {
-  position: sticky;
-  bottom: 0;
-  text-align: right;
-}
-.sticky-button a {
-  padding: 1rem 2rem;
-  cursor: pointer;
-  opacity: 0.5;
-  transition: 0.5s ease all;
-  background-color: transparent;
-}
-.sticky-button a:hover {
-  opacity: 1;
-}
 svg {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
 }
 path {
   color: #02b802;
 }
 
+footer {
+  display: none;
+}
+
 @media print {
+  @page {
+    margin: 0;
+  }
+  
+  body  {
+    margin: 1.6cm;
+  }
   img {
     display: none;
   }
@@ -136,20 +132,19 @@ path {
     font-size: 1rem;
   }
 
-  article {
-    float: left;
+  aside article {
+    display: none;
   }
 
   h1 {
+    width: 100%;
+    text-align: center;
     font-size: 1.5rem;
   }
   article > div {
     margin: 1rem 0;
   }
 
-  .sticky-button {
-    display: none;
-  }
 }
 
 @media (max-width:1024px) {
@@ -170,12 +165,41 @@ path {
 }
 
 @media (max-width: 720px) {
+  .intro img {
+    margin-bottom: 1rem;
+  }
+  
+  h1 {
+    margin: 0;
+    text-align: center;
+  }
+
+  aside, main.resume {
+    padding: 1rem;
+  }
+
+  aside {
+    padding: 2rem 0;
+  }
+
   aside > div {
     flex-direction: column  ;
   }
 
-  h1 {
-    margin: 0;
-    text-align: left;
+  aside article {
+    position: absolute;
+    z-index: 1;
+    background: #000;
+    width: 100%;
+    left: -99999rem;
   }
+
+  footer {
+    text-align: center;
+    background: #252934;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+  }
+
 }
