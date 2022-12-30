@@ -104,6 +104,10 @@ li {
   line-height: 1.5rem
 }
 
+.resume p {
+  margin-bottom: 1rem;
+}
+
 .resume > div {
   padding: 0.5rem 0;
 }
