@@ -33,7 +33,7 @@ a span {
   display: flex;
 }
 
-aside, main.resume {
+aside, main.about {
   padding: 3rem;
 }
 
@@ -96,19 +96,20 @@ h3 {
   margin: 1rem 0
 }
 
-ul {
+ul, ol {
   margin: 0.5rem 2rem;
 }
 
 li {
-  line-height: 1.5rem
+  line-height: 1.5rem;
+  list-style-position: inside;
 }
 
-.resume p {
+.about p {
   margin-bottom: 1rem;
 }
 
-.resume > div {
+.about > div {
   padding: 0.5rem 0;
 }
 
@@ -185,7 +186,7 @@ svg {
     text-align: center;
   }
 
-  aside, main.resume {
+  aside, main.about {
     padding: 1rem;
   }
 
